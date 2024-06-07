@@ -12,22 +12,22 @@ public class CustomerRepository {
 
     private List<Customer> customerList = new ArrayList<>();
 
-    public void createCustomer(Customer customer) {
+    public void save(Customer customer) {
         customerList.add(customer);
     }
 
-    public List<Customer> getCustomerList() {
+    public List<Customer> getAll() {
         return customerList;
     }
 
     public Optional<Customer> findById(Long id) {
-        return getCustomerList().stream()
+        return getAll().stream()
                 .filter(customer -> customer.getId().equals(id))
                 .findFirst();
     }
 
     public Optional<Customer> findByEmail(String email) {
-        return getCustomerList().stream()
+        return getAll().stream()
                 .filter(customer -> customer.getEmail().equals(email))
                 .findFirst();
     }

@@ -32,14 +32,14 @@ public class CustomerService {
 
         Customer customer = CustomerConverter.toCustomer(request);
 
-        customerRepository.createCustomer(customer);
+        customerRepository.save(customer);
 
         log.info("customer created. {}", customer.getEmail());
     }
 
     public List<Customer> getCustomerList() {
         log.info("customer listed. ");
-        return customerRepository.getCustomerList();
+        return customerRepository.getAll();
     }
 
     public void changeAccountType(String email, AccountType accountType) {
