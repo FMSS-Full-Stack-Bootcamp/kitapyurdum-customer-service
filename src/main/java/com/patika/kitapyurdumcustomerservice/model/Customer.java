@@ -1,9 +1,7 @@
 package com.patika.kitapyurdumcustomerservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Set;
 
@@ -11,8 +9,12 @@ import java.util.Set;
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Customer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;
@@ -20,6 +22,7 @@ public class Customer {
     private String password;
     private Integer credit;
     private String phoneNumber;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<Address> addresses;
     private Boolean isActive;
     private AccountType accountType;

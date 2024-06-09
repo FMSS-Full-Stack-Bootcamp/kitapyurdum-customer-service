@@ -39,7 +39,7 @@ public class CustomerService {
 
     public List<Customer> getCustomerList() {
         log.info("customer listed. ");
-        return customerRepository.getAll();
+        return customerRepository.findAll();
     }
 
     public void changeAccountType(String email, AccountType accountType) {
@@ -59,6 +59,7 @@ public class CustomerService {
     }
 
     public Customer getById(Long id) {
+
         Optional<Customer> foundCustomer = customerRepository.findById(id);
 
         if (foundCustomer.isEmpty()) {
